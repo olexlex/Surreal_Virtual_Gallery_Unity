@@ -20,7 +20,8 @@ public class trigger : MonoBehaviour
     {
         
         //按钮消失
-
+        man.transform.gameObject.SetActive(false);
+        enter.transform.gameObject.SetActive(false);
         //数字人消失
         /*
         //girl.transform.GetChild(0);
@@ -45,7 +46,7 @@ public class trigger : MonoBehaviour
         */
         //灯光消失
         //girl.transform.GetChild(10)
-
+        //获取组件
         director=girl.transform.GetComponent<PlayableDirector>();
         
 
@@ -116,13 +117,14 @@ public class trigger : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         Debug.Log("触发器检测中:" + other.gameObject.name);
+        man.transform.gameObject.SetActive(true);
+        enter.transform.gameObject.SetActive(true);
     }
     void OnTriggerExit(Collider other)
     {
         Debug.Log("触发器结束:" + other.gameObject.name);
-        //相机移动脚本可以用
-        GetComponent<move_wasd>().enabled = true;
-        GetComponent<Mouselook>().enabled = true;
+        man.transform.gameObject.SetActive(false);
+        enter.transform.gameObject.SetActive(false);
     }
 
 }
